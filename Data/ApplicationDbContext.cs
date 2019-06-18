@@ -14,6 +14,7 @@ namespace ChefPrive.Data
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<WeeklyMealPlan> WeeklyMealPlans { get; set; }
+        public DbSet<ClientIngredient> ClientIngredients { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
