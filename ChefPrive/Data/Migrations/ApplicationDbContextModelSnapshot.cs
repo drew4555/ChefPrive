@@ -62,7 +62,10 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("ClientIngredients");
                 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39532156ca5d1c74755cbde4cdd8d229c116518c
             modelBuilder.Entity("Domain.Favorite", b =>
                 {
                     b.Property<int>("Id")
@@ -83,7 +86,10 @@ namespace ChefPrive.Data.Migrations
                 });
 
             modelBuilder.Entity("Domain.Ingredient", b =>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39532156ca5d1c74755cbde4cdd8d229c116518c
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -308,7 +314,10 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39532156ca5d1c74755cbde4cdd8d229c116518c
             modelBuilder.Entity("Domain.ClientIngredient", b =>
                 {
                     b.HasOne("Domain.Client", "Client")
@@ -322,14 +331,20 @@ namespace ChefPrive.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39532156ca5d1c74755cbde4cdd8d229c116518c
             modelBuilder.Entity("Domain.Favorite", b =>
                 {
                     b.HasOne("Domain.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39532156ca5d1c74755cbde4cdd8d229c116518c
 
                     b.HasOne("Domain.Recipe", "Recipe")
                         .WithMany()
