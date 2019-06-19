@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ChefPrive.Data.Migrations
+namespace ChefPrive.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190618180923_mymigration1")]
-    partial class mymigration1
+    [Migration("20190619162546_SecondMigration")]
+    partial class SecondMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,13 +27,9 @@ namespace ChefPrive.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Email");
+                    b.Property<string>("ApplicationId");
 
                     b.Property<string>("FirstName");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("UserName");
 
                     b.Property<bool>("Vegan");
 
@@ -42,6 +38,8 @@ namespace ChefPrive.Data.Migrations
                     b.Property<int>("ZipCode");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationId");
 
                     b.ToTable("Clients");
                 });
@@ -65,25 +63,6 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("ClientIngredients");
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.Favorite", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ClientId");
-
-                    b.Property<int>("RecipeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("Favorites");
-                });
-
             modelBuilder.Entity("ChefPrive.Models.Ingredient", b =>
                 {
                     b.Property<int>("Id")
@@ -103,9 +82,15 @@ namespace ChefPrive.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ClientId");
+
+                    b.Property<bool>("Favorite");
+
                     b.Property<string>("Url");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.ToTable("Recipes");
                 });
@@ -187,6 +172,9 @@ namespace ChefPrive.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -226,6 +214,8 @@ namespace ChefPrive.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -298,6 +288,23 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("ChefPrive.Data.ApplicationDbContext+ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+
+                    b.ToTable("ApplicationUser");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("ChefPrive.Models.Client", b =>
+                {
+                    b.HasOne("ChefPrive.Data.ApplicationDbContext+ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationId");
+                });
+
             modelBuilder.Entity("ChefPrive.Models.ClientIngredient", b =>
                 {
                     b.HasOne("ChefPrive.Models.Client", "Client")
@@ -311,16 +318,11 @@ namespace ChefPrive.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.Favorite", b =>
+            modelBuilder.Entity("ChefPrive.Models.Recipe", b =>
                 {
                     b.HasOne("ChefPrive.Models.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ChefPrive.Models.Recipe", "Recipe")
-                        .WithMany()
-                        .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
