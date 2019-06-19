@@ -6,5 +6,6 @@ namespace Application
 {
     class Class1
     {
+
     }
 }

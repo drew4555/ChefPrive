@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChefPrive.Models
 {
-    public class ClientIngredient
+    public class ClientIngredient //fridge
     {
         [Key]
         public int Id { get; set; }
