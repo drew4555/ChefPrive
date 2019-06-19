@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ChefPrive.Models;
+using Domain;
 using unirest;
 using Newtonsoft.Json.Linq;
 
@@ -21,8 +21,19 @@ namespace ChefPrive.Controllers
 
 
         public IActionResult Index()
+<<<<<<< HEAD
         {           
             return View();            
+=======
+        {
+<<<<<<< HEAD
+            return View();
+
+            
+=======
+           return View();            
+>>>>>>> ccf289d320ba5a83e7fd4b4c8188e978432177bb
+>>>>>>> 2b4031a491f41c17ff533f5a62b59672a79287d0
         }
 
         public IActionResult About()

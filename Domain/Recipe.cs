@@ -5,18 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ChefPrive.Models
+namespace Domain
 {
-    public class WeeklyMealPlan
+    public class Recipe
     {
         [Key]
         public int Id { get; set; }
-        public int Day { get; set; }
-        public int MealNumber { get; set; }
-
-        [ForeignKey("Recipe")]
-        public int RecipeId { get; set; }
-        public Recipe Recipe { get; set; }
+        public string Url { get; set; }
+        public bool MarkedAsFavorite { get; set; }
 
         [ForeignKey("Client")]
         public int ClientId { get; set; }
