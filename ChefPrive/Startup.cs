@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using ChefPrive.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Domain;
 
 namespace ChefPrive
 {

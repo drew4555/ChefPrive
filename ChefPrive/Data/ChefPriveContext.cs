@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace ChefPrive.Models
+namespace Domain
 {
     public class ChefPriveContext : DbContext
     {
@@ -13,6 +13,6 @@ namespace ChefPrive.Models
         {
         }
 
-        public DbSet<ChefPrive.Models.Client> Client { get; set; }
+        public DbSet<Domain.Client> Client { get; set; }
     }
 }
