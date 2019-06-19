@@ -21,12 +21,8 @@ namespace ChefPrive.Controllers
 
 
         public IActionResult Index()
-        {
-           
-            Console.ReadLine();
-            return View();
-
-            
+        {           
+            return View();            
         }
 
         public IActionResult About()

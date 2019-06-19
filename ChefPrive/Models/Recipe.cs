@@ -12,12 +12,7 @@ namespace ChefPrive.Models
         [Key]
         public int Id { get; set; }
         public string Url { get; set; }
-<<<<<<< HEAD:Models/Recipe.cs
-        public bool Favorite { get; set; }
-=======
         public bool MarkedAsFavorite { get; set; }
-
->>>>>>> bb84592aaa718b0396524f7f7e6173d4a8a6736d:ChefPrive/Models/Recipe.cs
         [ForeignKey("Client")]
         public int ClientId { get; set; }
         public Client Client { get; set; }

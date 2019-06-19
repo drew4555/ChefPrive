@@ -17,18 +17,10 @@ namespace ChefPrive.Models
         public string FirstName { get; set; }
         public int FamilySize { get; set; }
         public bool Vegetarian { get; set; }
-<<<<<<< HEAD:Models/Client.cs
-        public bool Vegan { get; set; }  //shouldn't be able to choose both
+        public bool Vegan { get; set; } 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-
-=======
-        public bool Vegan { get; set; }
-        [ForeignKey("ApplicationUser")]
-        public string ApplicationUserId { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
->>>>>>> bb84592aaa718b0396524f7f7e6173d4a8a6736d:ChefPrive/Models/Client.cs
     }
 }
