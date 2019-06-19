@@ -14,7 +14,6 @@ namespace ChefPrive.Data
         {
         }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<WeeklyMealPlan> WeeklyMealPlans { get; set; }
