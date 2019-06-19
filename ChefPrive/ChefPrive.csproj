@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-ChefPrive-FBC4635E-5723-4558-98D0-246950C2993F</UserSecretsId>
+    <StartupObject>ChefPrive.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

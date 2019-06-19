@@ -14,9 +14,13 @@ namespace ChefPrive.Migrations
     [Migration("20190619162546_SecondMigration")]
     partial class SecondMigration
     {
+<<<<<<< HEAD
+        protected void BuildTargetModel(ModelBuilder modelBuilder)
+=======
         protected  void BuildTargetModel(ModelBuilder modelBuilder)
+>>>>>>> 2b4031a491f41c17ff533f5a62b59672a79287d0
         {
-#pragma warning disable 612, 618
+
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)

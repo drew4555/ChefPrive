@@ -21,6 +21,10 @@ namespace ChefPrive.Controllers
 
 
         public IActionResult Index()
+<<<<<<< HEAD
+        {           
+            return View();            
+=======
         {
 <<<<<<< HEAD
             return View();
@@ -29,6 +33,7 @@ namespace ChefPrive.Controllers
 =======
            return View();            
 >>>>>>> ccf289d320ba5a83e7fd4b4c8188e978432177bb
+>>>>>>> 2b4031a491f41c17ff533f5a62b59672a79287d0
         }
 
         public IActionResult About()
