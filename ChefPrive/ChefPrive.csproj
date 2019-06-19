@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Client.cs" />
+    <Compile Remove="ClientIngredient.cs" />
+    <Compile Remove="Data\ChefPriveContext.cs" />
+    <Compile Remove="ErrorViewModel.cs" />
+    <Compile Remove="Favorite.cs" />
+    <Compile Remove="Ingredient.cs" />
+    <Compile Remove="Recipe.cs" />
+    <Compile Remove="WeeklyMealPlanViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
@@ -17,7 +28,12 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Models\" />
 
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

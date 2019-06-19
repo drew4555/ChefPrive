@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Domain;
 
 namespace ChefPrive.Data.Migrations
 {
@@ -19,7 +20,7 @@ namespace ChefPrive.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ChefPrive.Models.Client", b =>
+            modelBuilder.Entity("Domain.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +45,7 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.ClientIngredient", b =>
+            modelBuilder.Entity("Domain.ClientIngredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +64,7 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("ClientIngredients");
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.Favorite", b =>
+            modelBuilder.Entity("Domain.Favorite", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +83,7 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("Favorites");
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.Ingredient", b =>
+            modelBuilder.Entity("Domain.Ingredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,7 +96,7 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.Recipe", b =>
+            modelBuilder.Entity("Domain.Recipe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +109,7 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("Recipes");
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.WeeklyMealPlan", b =>
+            modelBuilder.Entity("Domain.WeeklyMealPlan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -296,40 +297,40 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.ClientIngredient", b =>
+            modelBuilder.Entity("Domain.ClientIngredient", b =>
                 {
-                    b.HasOne("ChefPrive.Models.Client", "Client")
+                    b.HasOne("Domain.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ChefPrive.Models.Ingredient", "Ingredient")
+                    b.HasOne("Domain.Ingredient", "Ingredient")
                         .WithMany()
                         .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.Favorite", b =>
+            modelBuilder.Entity("Domain.Favorite", b =>
                 {
-                    b.HasOne("ChefPrive.Models.Client", "Client")
+                    b.HasOne("Domain.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ChefPrive.Models.Recipe", "Recipe")
+                    b.HasOne("Domain.Recipe", "Recipe")
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ChefPrive.Models.WeeklyMealPlan", b =>
+            modelBuilder.Entity("Domain.WeeklyMealPlan", b =>
                 {
-                    b.HasOne("ChefPrive.Models.Client", "Client")
+                    b.HasOne("Domain.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ChefPrive.Models.Recipe", "Recipe")
+                    b.HasOne("Domain.Recipe", "Recipe")
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade);
