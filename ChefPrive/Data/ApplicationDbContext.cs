@@ -13,10 +13,6 @@ namespace ChefPrive.Data
         public class ApplicationUser : IdentityUser
         {
         }
-<<<<<<< HEAD:Data/ApplicationDbContext.cs
-
-=======
->>>>>>> bb84592aaa718b0396524f7f7e6173d4a8a6736d:ChefPrive/Data/ApplicationDbContext.cs
         public DbSet<Client> Clients { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
