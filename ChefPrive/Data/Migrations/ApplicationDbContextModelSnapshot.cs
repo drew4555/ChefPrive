@@ -62,7 +62,6 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("ClientIngredients");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("Domain.Favorite", b =>
                 {
                     b.Property<int>("Id")
@@ -83,9 +82,6 @@ namespace ChefPrive.Data.Migrations
                 });
 
             modelBuilder.Entity("Domain.Ingredient", b =>
-=======
-            modelBuilder.Entity("ChefPrive.Models.Ingredient", b =>
->>>>>>> ccf289d320ba5a83e7fd4b4c8188e978432177bb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -310,28 +306,7 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("Domain.ClientIngredient", b =>
-=======
-            modelBuilder.Entity("ChefPrive.Data.ApplicationDbContext+ApplicationUser", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-
-                    b.ToTable("ApplicationUser");
-
-                    b.HasDiscriminator().HasValue("ApplicationUser");
-                });
-
-            modelBuilder.Entity("ChefPrive.Models.Client", b =>
-                {
-                    b.HasOne("ChefPrive.Data.ApplicationDbContext+ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationId");
-                });
-
-            modelBuilder.Entity("ChefPrive.Models.ClientIngredient", b =>
->>>>>>> ccf289d320ba5a83e7fd4b4c8188e978432177bb
                 {
                     b.HasOne("Domain.Client", "Client")
                         .WithMany()
@@ -344,24 +319,17 @@ namespace ChefPrive.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("Domain.Favorite", b =>
-=======
-            modelBuilder.Entity("ChefPrive.Models.Recipe", b =>
->>>>>>> ccf289d320ba5a83e7fd4b4c8188e978432177bb
                 {
                     b.HasOne("Domain.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
-<<<<<<< HEAD
 
                     b.HasOne("Domain.Recipe", "Recipe")
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade);
-=======
->>>>>>> ccf289d320ba5a83e7fd4b4c8188e978432177bb
                 });
 
             modelBuilder.Entity("Domain.WeeklyMealPlan", b =>
