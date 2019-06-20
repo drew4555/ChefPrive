@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application
 {
-    class Class1
+    public interface I 
     {
 
     }

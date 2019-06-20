@@ -2,12 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <body>
-        <div id="root"></div>
-        <h1>Chef Privé</h1>
-        <form class="example" action="/action_page.php" style="margin:auto;">
-            <input type="text" placeholder="Enter ingredients on hand" name="search">
-        </form><br><br><br><br><br><br><br><br><br><br><br>
+<body>
+    <div id="root"></div>
+    <h1>Chef Privé</h1>
+    <div class="flexsearch">
+        <div class="flexsearch--wrapper">
+            <form class="flexsearch--form" action="#" method="post">
+                <div class="flexsearch--input-wrapper">
+                    <input class="flexsearch--input" type="search" placeholder="Enter ingredients">
+                </div>
+                <input class="flexsearch--submit" type="submit" value="&#10140;" />
+            </form>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br>
+    <div class="form-container">
         <form action="recipes" style="display:inline-block">
             <input type="image" src="~/images/bowl1.png" width="200" height="200" />
         </form>
@@ -23,6 +33,8 @@
         <form action="favorites" style="display:inline-block">
             <input type="image" src="~/images/bowl5.png" width="200" height="200" />
         </form>
+    </div>
 
 </body>
+
 

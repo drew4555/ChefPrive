@@ -1,0 +1,54 @@
+﻿@model Domain.Recipe
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkedAsFavorite)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MarkedAsFavorite)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVegetarian)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsVegetarian)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVegan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsVegan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Client.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
