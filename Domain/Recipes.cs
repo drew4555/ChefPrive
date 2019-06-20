@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace Domain
 {
-    public class Recipe
+    public class Recipes
     {
         [Key]
         public int Id { get; set; }
         public string Url { get; set; }
         public bool MarkedAsFavorite { get; set; }
+        public bool IsVegetarian { get; set; }
+        public bool IsVegan { get; set; }
+        public string Title { get; set; }
+
 
         [ForeignKey("Client")]
         public int ClientId { get; set; }
         public Client Client { get; set; }
     }
 }
+

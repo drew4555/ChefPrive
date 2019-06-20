@@ -21,6 +21,11 @@ namespace Domain
         public int FamilySize { get; set; }
         public bool Vegetarian { get; set; }
         public bool Vegan { get; set; }
+        [NotMapped]
+        public List<string> Favorites { get; set; }
+        [NotMapped]
+        public List<string> WeeklyMealPlan { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }

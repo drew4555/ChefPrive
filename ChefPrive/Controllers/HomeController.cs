@@ -13,14 +13,12 @@ namespace ChefPrive.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
+
         {
-<<<<<<< HEAD
 
             return View();
 
-=======
-            return View();
->>>>>>> 39532156ca5d1c74755cbde4cdd8d229c116518c
+
         }
         public IActionResult About()
         {
