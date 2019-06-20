@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ChefPrive.Data;
 using Domain;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using static Domain.ApplicationDbContext;
+=======
+using System.Security.Claims;
+>>>>>>> 126d7d716b7977a02d610362d0ed84c692b192c3
 
 namespace ChefPrive.Controllers
 {
@@ -62,8 +66,12 @@ namespace ChefPrive.Controllers
             if (ModelState.IsValid)
             {
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+<<<<<<< HEAD
                 client.ApplicationUserId = userId;
+=======
+>>>>>>> 126d7d716b7977a02d610362d0ed84c692b192c3
                 _context.Clients.Add(client);
+                client.ApplicationUserId = userId;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

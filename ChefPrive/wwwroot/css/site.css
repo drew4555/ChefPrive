@@ -1,23 +1,18 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
-body {
+﻿body {
     padding: 0px 0 20px 0;
     background-color: #EEE;
     background-image: url("../images/background.jpg");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* QR code generator */
 #qrCode {
     margin: 15px;
 }
@@ -36,4 +31,98 @@ form.example input[type=text] {
     position:center;
     max-width: 350px;
     background: #f1f1f1;
+}
+
+
+
+@import "compass/css3";
+
+.flexsearch--wrapper {
+    height: auto;
+    width: auto;
+    max-width: 80%;
+    overflow: hidden;
+    background: transparent;
+    margin: 0;
+    position: static;
+}
+
+.flexsearch--form {
+    overflow: hidden;
+    position: relative;
+}
+
+.flexsearch--input-wrapper {
+    padding: 0 66px 0 0; 
+    overflow: hidden;
+}
+
+.flexsearch--input {
+    width: 100%;
+}
+
+.flexsearch {
+    padding: 0 5px 0 100px;
+}
+
+.flexsearch--input {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 60px;
+    padding: 0 46px 0 10px;
+    border-color: #888;
+    border-radius: 35px;
+    border-style: solid;
+    border-width: 5px;
+    margin-top: 15px;
+    color: #333;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 26px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.flexsearch--submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: none;
+    margin-top: 20px;
+    margin-right: 5px;
+    background: transparent;
+    color: #888;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.flexsearch--input:focus {
+    outline: none;
+    border-color: #333;
+}
+
+    .flexsearch--input:focus.flexsearch--submit {
+        color: #333;
+    }
+
+.flexsearch--submit:hover {
+    color: #333;
+    cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+    color: #888;
+}
+
+input:-moz-placeholder {
+    color: #888
+}
+
+.form-container{
+
 }
