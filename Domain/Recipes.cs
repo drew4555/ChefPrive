@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Domain
 {
-    public class Recipes
+    public class Recipe
     {
         [Key]
         public int Id { get; set; }
