@@ -15,7 +15,11 @@ namespace Domain
         public bool IsVegetarian { get; set; }
         public bool IsVegan { get; set; }
         public string Title { get; set; }
+<<<<<<< HEAD
+        
+=======
         public string Comment { get; set; }
+>>>>>>> c6d81ef9679b5bae39433c49181863ea39a37371
 
         [ForeignKey("Client")]
         public int ClientId { get; set; }
