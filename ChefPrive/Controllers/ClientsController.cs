@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ChefPrive.Data;
 using Domain;
+using System.Security.Claims;
 
 namespace ChefPrive.Controllers
 {
@@ -58,7 +59,9 @@ namespace ChefPrive.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _context.Clients.Add(client);
+                client.ApplicationUserId = userId;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
