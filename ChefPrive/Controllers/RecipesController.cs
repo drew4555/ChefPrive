@@ -105,7 +105,18 @@ namespace ChefPrive.Controllers
             {
                 try
                 {
-                    _context.Update(recipe);
+                    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+                    var recipeFound = _context.Recipes.Where(c => c.ClientId == client.Id && recipe.Id == id).FirstOrDefault();
+                    recipeFound.Id = recipe.Id;
+                    recipeFound.Url = recipe.Url;
+                    recipeFound.MarkedAsFavorite = recipe.MarkedAsFavorite;
+                    recipeFound.IsVegetarian = recipe.IsVegetarian;
+                    recipeFound.IsVegan = recipe.IsVegan;
+                    recipeFound.Title = recipe.Title;
+                    recipeFound.Comment = recipe.Comment;
+                    recipeFound.ClientId = recipe.ClientId;
+                    _context.Update(recipeFound);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
