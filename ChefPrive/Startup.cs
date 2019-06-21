@@ -13,6 +13,7 @@ using ChefPrive.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Domain;
+using Infrastructure;
 
 namespace ChefPrive
 {
@@ -42,6 +43,7 @@ namespace ChefPrive
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddTransient<IRecipeClient, RecipeClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -62,6 +62,7 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("ClientIngredients");
                 });
 
+
             modelBuilder.Entity("Domain.Favorite", b =>
                 {
                     b.Property<int>("Id")
@@ -306,7 +307,9 @@ namespace ChefPrive.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+
             modelBuilder.Entity("Domain.ClientIngredient", b =>
+
                 {
                     b.HasOne("Domain.Client", "Client")
                         .WithMany()

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Domain;
 using unirest;
 using Newtonsoft.Json.Linq;
+using Infrastructure;
 
 namespace ChefPrive.Controllers
 {
