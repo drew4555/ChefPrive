@@ -8,6 +8,7 @@ using Domain;
 using unirest;
 using Newtonsoft.Json.Linq;
 using Infrastructure;
+using Newtonsoft.Json;
 
 namespace ChefPrive.Controllers
 {
@@ -23,9 +24,10 @@ namespace ChefPrive.Controllers
 
         {
             RecipeClient meh = new RecipeClient();
-            //Recipe recipe = meh.GetRecipeById("479101");/*recipe*/
-            //_context.Recipes.Add(recipe);
-            return RedirectToAction("Index", "Recipes" );
+            var recipe = meh.GetRecipeById("479101");
+            _context.Recipes.Add(recipe);
+             _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Recipes");
 
 
         }

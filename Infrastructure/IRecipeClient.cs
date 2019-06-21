@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain;
 
 namespace Infrastructure
 {
     public interface IRecipeClient
     {
-        JObject GetRecipeById(string id);
+        Recipe GetRecipeById(string id);
     }
 }

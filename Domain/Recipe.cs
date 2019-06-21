@@ -8,6 +8,7 @@ namespace Domain
 {
     public class Recipe
     {
+       
         [Key]
         public int Id { get; set; }
         public string Url { get; set; }
@@ -21,8 +22,8 @@ namespace Domain
         public string Image { get; set; }
         public string Instructions { get; set; }
         [NotMapped]
-        public Array ExtendedIngredients { get; set; }
-        
+        public Ingredient[] extendedIngredients { get; set; }
+
 
         [ForeignKey("Client")]
         public int ClientId { get; set; }

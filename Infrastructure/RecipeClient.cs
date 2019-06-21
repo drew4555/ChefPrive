@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Domain;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,14 @@ namespace Infrastructure
 {
     public class RecipeClient : IRecipeClient
     {
-        public JObject GetRecipeById(string id)
-        {        
+        public Recipe GetRecipeById(string id)
+        {
+            Ingredient[] extendedIngredients = new Ingredient[200];
             string url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + id + "/information";
             var response = Unirest.get(url)
                .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                .header("X-RapidAPI-Key", "82e89ff980msh7da50a51185a3a1p10ddf2jsnc8633e45f495")
-               .asJson<JObject>().Body;
+               .asJson<Recipe>().Body;
             Console.WriteLine(response);
             return response;
         }
