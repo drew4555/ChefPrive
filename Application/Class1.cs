@@ -5,7 +5,6 @@ using System.Text;
 namespace Application
 {
     public class Class1
-
     {
 
     }
