@@ -83,6 +83,7 @@ namespace ChefPrive.Data.Migrations
                 });
 
             modelBuilder.Entity("Domain.Ingredient", b =>
+
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -328,6 +329,7 @@ namespace ChefPrive.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
+
 
                     b.HasOne("Domain.Recipe", "Recipe")
                         .WithMany()
