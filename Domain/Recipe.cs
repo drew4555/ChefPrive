@@ -17,6 +17,7 @@ namespace Domain
         public string Title { get; set; }
         public string Comment { get; set; }
 
+
         [ForeignKey("Client")]
         public int ClientId { get; set; }
         public Client Client { get; set; }
