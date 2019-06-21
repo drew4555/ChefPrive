@@ -13,11 +13,19 @@ namespace ChefPrive.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
 
         {
-
-            return View();
+            RecipeClient meh = new RecipeClient();
+            //Recipe recipe = meh.GetRecipeById("479101");/*recipe*/
+            //_context.Recipes.Add(recipe);
+            return RedirectToAction("Index", "Recipes" );
 
 
         }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190621140209_mymigration2")]
-    partial class mymigration2
+    [Migration("20190621163402_mymigration1")]
+    partial class mymigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,11 +88,17 @@ namespace Domain.Migrations
 
                     b.Property<string>("Comment");
 
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Instructions");
+
                     b.Property<bool>("IsVegan");
 
                     b.Property<bool>("IsVegetarian");
 
                     b.Property<bool>("MarkedAsFavorite");
+
+                    b.Property<int>("Servings");
 
                     b.Property<string>("Title");
 

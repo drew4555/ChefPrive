@@ -86,11 +86,17 @@ namespace Domain.Migrations
 
                     b.Property<string>("Comment");
 
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Instructions");
+
                     b.Property<bool>("IsVegan");
 
                     b.Property<bool>("IsVegetarian");
 
                     b.Property<bool>("MarkedAsFavorite");
+
+                    b.Property<int>("Servings");
 
                     b.Property<string>("Title");
 
