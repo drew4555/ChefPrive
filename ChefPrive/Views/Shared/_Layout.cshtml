@@ -20,23 +20,12 @@
 <body>
     <div class="container" style="padding: 0; margin: 0; width: 100%; max-width: 100%;">
         <nav class="navbar navbar-expand bg-dark navbar-dark">
-            @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>*@
-            @*<div class="collapse navbar-collapse">*@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Chef Privé</a>
                     </li>
-                    @*<li class="nav-item">
-                        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-link">Home</a>
-                    </li>*@
                     <partial name="_LoginPartial" />
                 </ul>
-            @*</div>*@
         </nav>
     </div>
     
