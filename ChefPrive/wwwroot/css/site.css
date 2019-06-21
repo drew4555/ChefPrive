@@ -106,9 +106,9 @@ form.example input[type=text] {
     border-color: #333;
 }
 
-    .flexsearch--input:focus.flexsearch--submit {
-        color: #333;
-    }
+.flexsearch--input:focus.flexsearch--submit {
+    color: #333;
+}
 
 .flexsearch--submit:hover {
     color: #333;
@@ -121,8 +121,4 @@ form.example input[type=text] {
 
 input:-moz-placeholder {
     color: #888
-}
-
-.form-container{
-
 }
