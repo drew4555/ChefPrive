@@ -20,10 +20,14 @@ namespace ChefPrive.Controllers
         }
 
         // GET: Recipes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Recipe recipe)
         {
-            var applicationDbContext = _context.Recipes.Include(r => r.Client);
-            return View(await applicationDbContext.ToListAsync());
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            recipe.ClientId = client.Id;
+            //var applicationDbContext = _context.Recipes.Where(c => c.ClientId == client.Id);
+            return View(recipe/*await applicationDbContext.ToListAsync()*/);
         }
 
         // GET: Recipes/Details/5
