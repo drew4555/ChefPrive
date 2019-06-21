@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Domain.Migrations
 {
-    public partial class mymigration2 : Migration
+    public partial class mymigration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -229,6 +229,9 @@ namespace Domain.Migrations
                     IsVegan = table.Column<bool>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Comment = table.Column<string>(nullable: true),
+                    Servings = table.Column<int>(nullable: false),
+                    Image = table.Column<string>(nullable: true),
+                    Instructions = table.Column<string>(nullable: true),
                     ClientId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
