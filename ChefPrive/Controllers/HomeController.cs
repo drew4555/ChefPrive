@@ -23,11 +23,12 @@ namespace ChefPrive.Controllers
         public IActionResult Index()
 
         {
-            RecipeClient meh = new RecipeClient();
-            var recipe = meh.GetRecipeById("479101");
-            _context.Recipes.Add(recipe);
-             _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Recipes");
+            //RecipeClient meh = new RecipeClient();
+            //var recipe = meh.GetRecipeById("479101");
+            //_context.Recipes.Add(recipe);
+            // _context.SaveChangesAsync();
+            //return RedirectToAction("Index", "Recipes");
+            return View();
 
 
         }
