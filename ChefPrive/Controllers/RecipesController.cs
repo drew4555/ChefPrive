@@ -26,8 +26,8 @@ namespace ChefPrive.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
             recipe.ClientId = client.Id;
-            //var applicationDbContext = _context.Recipes.Where(c => c.ClientId == client.Id);
-            return View(recipe/*await applicationDbContext.ToListAsync()*/);
+            var clientRecipes = _context.Recipes.Where(c => c.ClientId == client.Id);
+            return View(await clientRecipes.ToListAsync());
         }
 
         // GET: Recipes/Details/5
@@ -70,7 +70,7 @@ namespace ChefPrive.Controllers
                 recipe.ClientId = client.Id;
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", recipe.ClientId);
             return View(recipe);
