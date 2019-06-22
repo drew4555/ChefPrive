@@ -27,7 +27,7 @@ namespace ChefPrive.Controllers
             var recipe = meh.GetRecipeById("479101");
             _context.Recipes.Add(recipe);
              _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Recipes");
+            return View();/*RedirectToAction("Index", "Recipes");*/   //why is this redirecting to the recipes page??
 
 
         }
