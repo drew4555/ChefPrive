@@ -17,13 +17,11 @@ namespace Domain
         public bool IsVegan { get; set; }
         public string Title { get; set; }
         public string Comment { get; set; }
-
         public int Servings { get; set; }
         public string Image { get; set; }
         public string Instructions { get; set; }
         [NotMapped]
         public Ingredient[] extendedIngredients { get; set; }
-
 
         [ForeignKey("Client")]
         public int ClientId { get; set; }
