@@ -64,7 +64,6 @@ namespace ChefPrive.Controllers
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 client.ApplicationUserId = userId;
                 _context.Clients.Add(client);
-                client.ApplicationUserId = userId;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -6,11 +6,11 @@ using Domain;
 
 namespace ChefPrive.Models
 {
-    public class ClientRecipesViewModel
+    public class MealPlanViewModel
     {
         public List<Recipe> Recipes { get; set; }
         
-        public ClientRecipesViewModel(List<Recipe> recipes)
+        public MealPlanViewModel(List<Recipe> recipes)
         {
             Recipes = recipes;
         }
