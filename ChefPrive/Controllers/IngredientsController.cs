@@ -18,7 +18,16 @@ namespace ChefPrive.Controllers
         {
             _context = context;
         }
-
+        //public async Task<IActionResult> ShoppingList(Ingredient ingredient, Recipe recipe)
+        //{
+        //    //List<Ingredient> ingredients = new List<Ingredient>();
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+        //    var ownedIngredient = _context.Ingredients.Where(i => i.ClientId == client.Id);
+        //    var recipeIngredient = recipe.extendedIngredients.ToList();
+        //    var ingredients = recipeIngredient.Except(ownedIngredient)
+        //    return View(await ingredients.ToListAsync());
+        //}
         // GET: Ingredients
         public async Task<IActionResult> Index()
         {
