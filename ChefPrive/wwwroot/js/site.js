@@ -3,25 +3,6 @@
 
 // Write your JavaScript code.
 
-var api = '';
-var apiKey = '';
-var input;
+$('#ingredients').click(function () {
 
-
-function setup() {
-
-    var ;
-
-
-    input = select('flexsearch--submit');
-}
-
-
-function SearchRecipes() {
-    var url = api + input.value() + apiKey + ingredients;
-    loadJson(url, gotData);
-}
-
-function gotData(data) {
-    recipes = data;
 }

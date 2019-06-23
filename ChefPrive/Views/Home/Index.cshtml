@@ -11,7 +11,7 @@
         <div class="flexsearch--wrapper">
             <form class="flexsearch--form" action="#" method="post">
                 <div class="flexsearch--input-wrapper">
-                    <input class="flexsearch--input" type="search" placeholder="Enter ingredients (separated by commas)"
+                    <input id="ingredients" class="flexsearch--input" type="search" placeholder="Enter ingredients (separated by commas)"
                            @*oninput="SearchRecipes()"*@>
                 </div>
                 <input class="flexsearch--submit" type="submit" value="&#10140;" />
@@ -30,10 +30,10 @@
         <form action="shopping list" style="display:inline-block" title="My Shopping List">
             <input type="image" src="~/images/bowl3.png" width="200" height="200" />
         </form>
-        <form action="ingredients" style="display:inline-block" title="My Pantry">
+        <form action="custom recipes" style="display:inline-block" title="My Pantry">
             <input type="image" src="~/images/bowl4.png" width="200" height="200" />
         </form>
-        <form action="recipes/favorites" style="display:inline-block" title="My Favorites">
+        <form action="favorites" style="display:inline-block" title="My Favorites">
             <input type="image" src="~/images/bowl5.png" width="200" height="200" />
         </form>
     </div>
