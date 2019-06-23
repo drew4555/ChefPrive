@@ -19,6 +19,8 @@ namespace Domain
         public string Comment { get; set; }
         public int Servings { get; set; }
         public string Image { get; set; }
+        public int? MealNumber { get; set; }
+        public int? MealDay { get; set; }
         public string Instructions { get; set; }
         [NotMapped]
         public Ingredient[] extendedIngredients { get; set; }
