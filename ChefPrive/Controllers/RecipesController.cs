@@ -18,14 +18,20 @@ namespace ChefPrive.Controllers
         {
             _context = context;
         }
+        public async Task<IActionResult> Favorites(Recipe recipe)
+        {
 
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var client = _context.Clients.Where(c => c.ApplicationUserId == userId ).FirstOrDefault();
+            var favoriteRecipes = _context.Recipes.Where(r => r.MarkedAsFavorite == true && r.ClientId == client.Id);
+            return View(await favoriteRecipes.ToListAsync());
+        }
         // GET: Recipes
         public async Task<IActionResult> Index(Recipe recipe)
         {
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
-            recipe.ClientId = client.Id;
             var clientRecipes = _context.Recipes.Where(c => c.ClientId == client.Id);
             return View(await clientRecipes.ToListAsync());
         }

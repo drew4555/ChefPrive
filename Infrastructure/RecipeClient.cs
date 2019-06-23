@@ -13,8 +13,7 @@ namespace Infrastructure
     {
         public Recipe GetRecipeById(string id)
         {
-            Ingredient[] extendedIngredients = new Ingredient[200];
-            string url = "" + id + "/information";
+            string url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + id + "/information";
             var response = Unirest.get(url)
                .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                .header("X-RapidAPI-Key", "82e89ff980msh7da50a51185a3a1p10ddf2jsnc8633e45f495")
@@ -23,18 +22,19 @@ namespace Infrastructure
             return response;
         }
 
-        public JArray SearchRecipeByIngredients(int numberOfRecipesReturned, string ingredients)
+        public Recipe[] SearchRecipeByIngredients(int numberOfRecipesReturned, string ingredients)
         {
+
             var response = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?" +
                 "number=" + numberOfRecipesReturned + "&ranking=1&ignorePantry=false&" +
                 "ingredients=" + System.Web.HttpUtility.UrlEncode(ingredients))
                 .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "82e89ff980msh7da50a51185a3a1p10ddf2jsnc8633e45f495")
-                .asJson<JArray>().Body;
+                .asJson<Recipe[]>().Body;
             return response;
         }
 
-         public JObject SearchRecipe(string diet, string excludeIngredients, string intolerances, int numberOfRecipes, string type, string query)
+         public Recipe SearchRecipe(string diet, string excludeIngredients, string intolerances, int numberOfRecipes, string type, string query)
         {
 
             var response = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?" + 
@@ -46,20 +46,20 @@ namespace Infrastructure
                 "&query=" + System.Web.HttpUtility.UrlEncode(query))
                 .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "82e89ff980msh7da50a51185a3a1p10ddf2jsnc8633e45f495")
-                .asJson<JObject>().Body;
+                .asJson<Recipe>().Body;
             return response;
         }
 
-        public JArray RecommendRecipes(string id)
+        public Recipe[] RecommendRecipes(string id)
         {
             var response = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + id + "/similar")
                 .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "82e89ff980msh7da50a51185a3a1p10ddf2jsnc8633e45f495")
-                .asJson<JArray>().Body;
+                .asJson<Recipe[]>().Body;
             return response;
         }
 
-        public JObject GetMealPlan(string timeFrame, int targetCalories, string diet, string exclude)
+        public Recipe GetMealPlan(string timeFrame, int targetCalories, string diet, string exclude)
         {
             var response = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?" + 
                 "timeFrame=" + timeFrame + 
@@ -68,7 +68,7 @@ namespace Infrastructure
                 "&exclude=" + System.Web.HttpUtility.UrlEncode(exclude))
                 .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "82e89ff980msh7da50a51185a3a1p10ddf2jsnc8633e45f495")
-                .asJson<JObject>().Body;
+                .asJson<Recipe>().Body;
             return response;
         }
     }

@@ -5,30 +5,30 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ChefPrive.Data;
 using Domain;
-using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using static Domain.ApplicationDbContext;
 
 namespace ChefPrive.Controllers
 {
-    public class ClientsController : Controller
+    public class IngredientsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ClientsController(ApplicationDbContext context)
+        public IngredientsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Clients
+        // GET: Ingredients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Clients.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            var clientIngredients = _context.Ingredients.Where(i => i.ClientId == client.Id);
+            return View(await clientIngredients.ToListAsync());
         }
 
-        // GET: Clients/Details/5
+        // GET: Ingredients/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,41 +36,45 @@ namespace ChefPrive.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Clients
+            var ingredient = await _context.Ingredients
+                .Include(i => i.client)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (client == null)
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            return View(client);
+            return View(ingredient);
         }
 
-        // GET: Clients/Create
+        // GET: Ingredients/Create
         public IActionResult Create()
         {
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id");
             return View();
         }
 
-        // POST: Clients/Create
+        // POST: Ingredients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserName,Password,Email,ZipCode,FirstName,Vegetarian,Vegan")] Client client)
+        public async Task<IActionResult> Create([Bind("Id,Original,ClientId")] Ingredient ingredient)
         {
             if (ModelState.IsValid)
             {
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                client.ApplicationUserId = userId;
-                _context.Clients.Add(client);
+                var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+                ingredient.ClientId = client.Id;
+                _context.Add(ingredient);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(client);
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", ingredient.ClientId);
+            return View(ingredient);
         }
 
-        // GET: Clients/Edit/5
+        // GET: Ingredients/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,22 +82,23 @@ namespace ChefPrive.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Clients.FindAsync(id);
-            if (client == null)
+            var ingredient = await _context.Ingredients.FindAsync(id);
+            if (ingredient == null)
             {
                 return NotFound();
             }
-            return View(client);
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", ingredient.ClientId);
+            return View(ingredient);
         }
 
-        // POST: Clients/Edit/5
+        // POST: Ingredients/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UserName,Password,Email,ZipCode,FirstName,Vegetarian,Vegan")] Client client)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Original,ClientId")] Ingredient ingredient)
         {
-            if (id != client.Id)
+            if (id != ingredient.Id)
             {
                 return NotFound();
             }
@@ -102,12 +107,12 @@ namespace ChefPrive.Controllers
             {
                 try
                 {
-                    _context.Update(client);
+                    _context.Update(ingredient);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClientExists(client.Id))
+                    if (!IngredientExists(ingredient.Id))
                     {
                         return NotFound();
                     }
@@ -118,10 +123,11 @@ namespace ChefPrive.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(client);
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", ingredient.ClientId);
+            return View(ingredient);
         }
 
-        // GET: Clients/Delete/5
+        // GET: Ingredients/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,30 +135,31 @@ namespace ChefPrive.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Clients
+            var ingredient = await _context.Ingredients
+                .Include(i => i.client)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (client == null)
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            return View(client);
+            return View(ingredient);
         }
 
-        // POST: Clients/Delete/5
+        // POST: Ingredients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var client = await _context.Clients.FindAsync(id);
-            _context.Clients.Remove(client);
+            var ingredient = await _context.Ingredients.FindAsync(id);
+            _context.Ingredients.Remove(ingredient);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClientExists(int id)
+        private bool IngredientExists(int id)
         {
-            return _context.Clients.Any(e => e.Id == id);
+            return _context.Ingredients.Any(e => e.Id == id);
         }
     }
 }
