@@ -9,6 +9,8 @@ using unirest;
 using Newtonsoft.Json.Linq;
 using Infrastructure;
 using Newtonsoft.Json;
+using Application;
+using System.Security.Claims;
 
 namespace ChefPrive.Controllers
 {
@@ -20,15 +22,31 @@ namespace ChefPrive.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index() { 
 
-        {
-            RecipeClient meh = new RecipeClient();
-            var recipe = meh.GetRecipeById("479101");
-            _context.Recipes.Add(recipe);
-            _context.SaveChangesAsync();
-            //return RedirectToAction("Index", "Recipes");
+        //{
+        //    ClientRecipeInfo myInfo = new ClientRecipeInfo();
+        //    var recipe = myInfo.GetRecipeById("479101");
+        //    Recipe newRecipe = new Recipe();
+        //    newRecipe.Title = recipe.Title;
+        //    newRecipe.IsVegan = recipe.IsVegan;
+        //    newRecipe.Image = recipe.Image;
+        //    newRecipe.IsVegetarian = recipe.IsVegetarian;
+        //    newRecipe.Instructions = recipe.Instructions;
+        //    newRecipe.MarkedAsFavorite = recipe.MarkedAsFavorite;
+        //    newRecipe.Url = recipe.Url;
+        //    newRecipe.Comment = recipe.Comment;
+        //    newRecipe.Servings = recipe.Servings;
+        //    //newRecipe = recipe;
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+        //    newRecipe.ClientId = client.Id;
+        //    _context.Recipes.Add(newRecipe);
+        //    await _context.SaveChangesAsync();
+        //    //return RedirectToAction("Index", "Recipes");
             return View();
+    
+            
 
 
         }

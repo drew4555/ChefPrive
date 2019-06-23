@@ -32,7 +32,6 @@ namespace ChefPrive.Controllers
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
-            recipe.ClientId = client.Id;
             var clientRecipes = _context.Recipes.Where(c => c.ClientId == client.Id);
             return View(await clientRecipes.ToListAsync());
         }

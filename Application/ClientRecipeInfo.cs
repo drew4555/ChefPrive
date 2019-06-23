@@ -7,16 +7,21 @@ using unirest;
 
 namespace Application
 {
-    class ClientRecipeInfo : IRecipeClient
+    public class ClientRecipeInfo : IRecipeClient
     {
-        private readonly ApplicationDbContext _context;
+        
+        public ApplicationDbContext _context;
+        public ClientRecipeInfo()
+        {
+            
+        }
 
         public Recipe GetRecipeById(string id)
         {
             RecipeClient recipeClient = new RecipeClient();
             var recipe = recipeClient.GetRecipeById(id);
-            _context.Recipes.Add(recipe);
-            _context.SaveChangesAsync();
+            //_context.Recipes.Add(recipe);
+            //_context.SaveChangesAsync();
             return recipe;
         }
         public Recipe[] SearchRecipeByIngredients(int numberOfRecipesReturned, string ingredients)
