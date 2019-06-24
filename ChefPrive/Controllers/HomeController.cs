@@ -11,6 +11,7 @@ using Infrastructure;
 using Newtonsoft.Json;
 using Application;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChefPrive.Controllers
 {
@@ -22,12 +23,17 @@ namespace ChefPrive.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
-        { 
 
-            return View();
+        public async Task<IActionResult> Index(string searchString) {
+                var recipes = from r in _context.Recipes
+                             select r;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                recipes = recipes.Where(s => s.Title.Contains(searchString));
+                }
+                return View(await recipes.ToListAsync());
+            }
 
-        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
