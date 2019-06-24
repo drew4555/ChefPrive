@@ -24,7 +24,7 @@ namespace ChefPrive.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
             var ownedIngredient = _context.Ingredients.Where(i => i.ClientId == client.Id).ToList();
-            var recipeIngredient = recipe.extendedIngredients.ToList();
+            var recipeIngredient = recipe.ExtendedIngredients;
             var ingredients = recipeIngredient.Except(ownedIngredient).ToList();
             return View(await Task.FromResult(ingredients.ToList()));
         }

@@ -23,7 +23,7 @@ namespace Domain
         public int? MealDay { get; set; }
         public string Instructions { get; set; }
         [NotMapped]
-        public Ingredient[]? extendedIngredients { get; set; }
+        public Ingredient[] ExtendedIngredients { get; set; }
 
         [ForeignKey("Client")]
         public int ClientId { get; set; }
