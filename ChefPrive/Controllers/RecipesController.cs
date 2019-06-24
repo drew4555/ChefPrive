@@ -26,6 +26,13 @@ namespace ChefPrive.Controllers
             var favoriteRecipes = _context.Recipes.Where(r => r.MarkedAsFavorite == true && r.ClientId == client.Id);
             return View(await favoriteRecipes.ToListAsync());
         }
+        public async Task<IActionResult> MealPlan(Recipe[] recipe)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            var MealPlan = _context.Recipes.Where(r => r.MealDay != null && r.MealNumber != null && r.ClientId == client.Id);
+            return View(await MealPlan.ToListAsync());
+        }
         // GET: Recipes
         public async Task<IActionResult> Index(Recipe recipe)
         {

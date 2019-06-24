@@ -23,6 +23,7 @@ namespace ChefPrive.Controllers
         {
             _context = context;
         }
+
         public async Task<IActionResult> Index(string searchString) {
                 var recipes = from r in _context.Recipes
                              select r;
@@ -32,8 +33,7 @@ namespace ChefPrive.Controllers
                 }
                 return View(await recipes.ToListAsync());
             }
-            
-        
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
