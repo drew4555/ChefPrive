@@ -11,6 +11,7 @@ using Infrastructure;
 using Newtonsoft.Json;
 using Application;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChefPrive.Controllers
 {
@@ -22,34 +23,17 @@ namespace ChefPrive.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index() { 
-
-        //{
-        //    ClientRecipeInfo myInfo = new ClientRecipeInfo();
-        //    var recipe = myInfo.GetRecipeById("479101");
-        //    Recipe newRecipe = new Recipe();
-        //    newRecipe.Title = recipe.Title;
-        //    newRecipe.IsVegan = recipe.IsVegan;
-        //    newRecipe.Image = recipe.Image;
-        //    newRecipe.IsVegetarian = recipe.IsVegetarian;
-        //    newRecipe.Instructions = recipe.Instructions;
-        //    newRecipe.MarkedAsFavorite = recipe.MarkedAsFavorite;
-        //    newRecipe.Url = recipe.Url;
-        //    newRecipe.Comment = recipe.Comment;
-        //    newRecipe.Servings = recipe.Servings;
-        //    //newRecipe = recipe;
-        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var client = _context.Clients.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
-        //    newRecipe.ClientId = client.Id;
-        //    _context.Recipes.Add(newRecipe);
-        //    await _context.SaveChangesAsync();
-        //    //return RedirectToAction("Index", "Recipes");
-            return View();
-    
+        public async Task<IActionResult> Index(string searchString) {
+                var recipes = from r in _context.Recipes
+                             select r;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                recipes = recipes.Where(s => s.Title.Contains(searchString));
+                }
+                return View(await recipes.ToListAsync());
+            }
             
-
-
-        }
+        
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
